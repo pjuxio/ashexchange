@@ -1,8 +1,8 @@
-# AshExchange — Claude Development Guide
+# aSHE XCHNGE — Claude Development Guide
 
 ## Project Overview
 
-AshExchange is a platform connecting artists with organizations for jobs, residencies, fellowships, grants, commissions, and other opportunities. Artists create profiles and save opportunities; organizations post listings and save artists.
+aSHE XCHNGE is a platform connecting artists with organizations for jobs, residencies, fellowships, grants, commissions, and other opportunities. Artists create profiles and save opportunities; organizations post listings and save artists.
 
 ## Tech Stack
 

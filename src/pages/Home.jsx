@@ -11,7 +11,7 @@ export function Home() {
             <span className="text-indigo-600">Opportunities</span>
           </h1>
           <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            AshExchange is a dedicated platform where artists discover residencies,
+            aSHE XCHNGE is a dedicated platform where artists discover residencies,
             fellowships, grants, and jobs — and organizations find the creative
             talent they need.
           </p>
@@ -38,11 +38,11 @@ export function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
-            How AshExchange Works
+            How aSHE XCHNGE Works
           </h2>
           <p className="text-center text-gray-500 mb-14 max-w-2xl mx-auto">
             Whether you&apos;re an artist looking for your next opportunity or an
-            organization searching for creative talent, we&apos;ve built AshExchange
+            organization searching for creative talent, we&apos;ve built aSHE XCHNGE
             for you.
           </p>
 
@@ -121,7 +121,7 @@ export function Home() {
             Opportunities for Every Career Stage
           </h2>
           <p className="text-gray-500 mb-12 max-w-xl mx-auto">
-            From emerging artists to established professionals, AshExchange
+            From emerging artists to established professionals, aSHE XCHNGE
             surfaces opportunities at every level.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -152,7 +152,7 @@ export function Home() {
             Ready to get started?
           </h2>
           <p className="text-indigo-200 mb-8 text-lg">
-            Join AshExchange today — it&apos;s free to create an account.
+            Join aSHE XCHNGE today — it&apos;s free to create an account.
           </p>
           <Link
             to="/signup"

@@ -1,4 +1,4 @@
-# AshExchange
+# aSHE XCHNGE
 
 A platform connecting artists with organizations for job opportunities and collaborations.
 

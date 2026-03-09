@@ -64,7 +64,7 @@ export function Signup() {
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-gray-900">Create your account</h1>
             <p className="mt-2 text-sm text-gray-500">
-              Join AshExchange — it&apos;s free
+              Join aSHE XCHNGE — it&apos;s free
             </p>
           </div>
 

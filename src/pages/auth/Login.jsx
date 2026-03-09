@@ -44,7 +44,7 @@ export function Login() {
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
             <p className="mt-2 text-sm text-gray-500">
-              Sign in to your AshExchange account
+              Sign in to your aSHE XCHNGE account
             </p>
           </div>
 
