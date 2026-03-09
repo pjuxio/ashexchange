@@ -96,8 +96,7 @@ export function Home() {
                   Always free for artists.
                 </p>
                 <p className="text-sm text-gray-600">
-                  Create your profile, browse opportunities, and get discovered —{' '}
-                  <span className="font-medium" style={{ color: 'var(--brand-green)' }}>at no cost</span>.
+                  Create your <span className="font-medium" style={{ color: 'var(--brand-green)' }}>FREE</span> profile, browse opportunities, and get discovered.
                 </p>
               </div>
               <Link
@@ -137,11 +136,10 @@ export function Home() {
               </ul>
               <div className="border-t border-gray-100 pt-4 mb-4">
                 <p className="text-sm font-semibold mb-1" style={{ color: 'var(--brand-text)' }}>
-                  Posting is simple and self-managed.
+                  Posting is easy and affordable.
                 </p>
                 <p className="text-sm text-gray-600">
-                  <span className="font-medium" style={{ color: 'var(--brand-green)' }}>$75 per listing</span> for a 90-day cycle.
-                  Boost visibility with a <span className="font-medium">Newsletter Spotlight</span> ($100) or <span className="font-medium">Banner Ad</span> (from $200).
+                  <span className="font-medium" style={{ color: 'var(--brand-green)' }}>$50 per listing</span> for a 30-day post.
                 </p>
               </div>
               <Link
