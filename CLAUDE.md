@@ -131,11 +131,28 @@ opportunity status:        draft | active | closed
 - Debounce text search with `setTimeout` / `clearTimeout` in a `useEffect`
 
 ### Styling
-- Tailwind utility classes throughout — no custom CSS except `src/App.css` (minimal resets)
+- Tailwind utility classes throughout — no custom CSS except `src/index.css` (brand variables + resets)
 - Consistent card style: `bg-white rounded-2xl border border-gray-200 p-6`
 - Badge/chip style: `inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium`
 - Toggle chip (selected): `bg-indigo-600 text-white border-indigo-600`
 - Toggle chip (unselected): `bg-white text-gray-700 border-gray-300 hover:border-indigo-400`
+
+### Brand color palette (`src/index.css` `:root`)
+| Variable | Hex | Use |
+|---|---|---|
+| `--brand-plum` | `#4a1942` | Primary CTA buttons, active states, links |
+| `--brand-red` | `#d03f24` | Hero accents, CTA banner section |
+| `--brand-brown` | `#c2730f` | Secondary accents (maps to Tailwind `indigo`) |
+| `--brand-yellow` | `#ffde59` | "How it Works" section background |
+| `--brand-green` | `#2d5016` | Checkmarks, free/pricing accent text |
+| `--brand-text` | `#1a1a1a` | Default body text |
+
+- Use `style={{ backgroundColor: 'var(--brand-plum)' }}` with inline hover handlers for brand-colored buttons (Tailwind's `indigo` scale maps to brown, not plum)
+- Hover dark for plum: `#371330`; for red: `#b03520`
+
+### Post-signup flow
+- After successful `signUp`, show a `submitted` confirmation screen ("Check your inbox") instead of navigating away
+- The screen displays the user's email and instructs them to verify before logging in
 
 ## What's Not Yet Built
 
