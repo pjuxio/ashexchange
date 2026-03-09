@@ -19,7 +19,7 @@ export function Home() {
             <Link
               to="/signup"
               state={{ role: 'artist' }}
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full transition-colors shadow-lg" style={{ backgroundColor: 'var(--brand-red)' }} onMouseEnter={e => e.currentTarget.style.backgroundColor='#b03520'} onMouseLeave={e => e.currentTarget.style.backgroundColor='var(--brand-red)'}
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full transition-colors shadow-lg" style={{ backgroundColor: 'var(--brand-plum)' }} onMouseEnter={e => e.currentTarget.style.backgroundColor='#371330'} onMouseLeave={e => e.currentTarget.style.backgroundColor='var(--brand-plum)'}
             >
               I&apos;m an Artist
             </Link>
@@ -45,13 +45,13 @@ export function Home() {
       {/* About */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--brand-text)' }}>
+          <h2 className="text-4xl font-bold mb-8" style={{ color: 'var(--brand-text)' }}>
             Our Mission
           </h2>
-          <p className="text-lg leading-relaxed mb-6" style={{ color: 'var(--brand-text)' }}>
+          <p className="text-xl leading-relaxed mb-6" style={{ color: 'var(--brand-text)' }}>
             The aSHE XCHNGE designs programs, projects and products that center Black Women Creatives.
           </p>
-          <p className="text-lg leading-relaxed" style={{ color: 'var(--brand-text)' }}>
+          <p className="text-xl leading-relaxed" style={{ color: 'var(--brand-text)' }}>
             We highlight and amplify the voices of Black women creatives across various artistic disciplines.
           </p>
         </div>
@@ -60,10 +60,10 @@ export function Home() {
       {/* How it works */}
       <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'var(--brand-yellow)' }}>
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4" style={{ color: 'var(--brand-text)' }}>
+          <h2 className="text-4xl font-bold text-center mb-4" style={{ color: 'var(--brand-text)' }}>
             How aSHE XCHNGE Works
           </h2>
-          <p className="text-center mb-14 max-w-2xl mx-auto" style={{ color: 'var(--brand-text)' }}>
+          <p className="text-lg text-center mb-14 max-w-4xl mx-auto" style={{ color: 'var(--brand-text)' }}>
             Whether you&apos;re an artist looking for your next opportunity or an
             organization searching for creative talent, we&apos;ve built aSHE XCHNGE
             for you.
@@ -72,8 +72,8 @@ export function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* For artists */}
             <div className="bg-white rounded-2xl p-8">
-              <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--brand-text)' }}>For Artists</h3>
-              <ul className="space-y-3" style={{ color: 'var(--brand-text)' }}>
+              <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--brand-text)' }}>For Artists</h3>
+              <ul className="space-y-3 text-lg" style={{ color: 'var(--brand-text)' }}>
                 <li className="flex items-start gap-2">
                   <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
                   Build a profile with your bio, work, and artist statement
@@ -114,10 +114,10 @@ export function Home() {
 
             {/* For organizations */}
             <div className="bg-white rounded-2xl p-8">
-              <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--brand-text)' }}>
+              <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--brand-text)' }}>
                 For Organizations
               </h3>
-              <ul className="space-y-3 mb-5" style={{ color: 'var(--brand-text)' }}>
+              <ul className="space-y-3 mb-5 text-lg" style={{ color: 'var(--brand-text)' }}>
                 <li className="flex items-start gap-2">
                   <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
                   Post jobs, residencies, fellowships, grants, and commissions
@@ -162,10 +162,10 @@ export function Home() {
       {/* Opportunity types */}
       <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#fffef5' }}>
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--brand-text)' }}>
+          <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--brand-text)' }}>
             Opportunities for Every Career Stage
           </h2>
-          <p className="mb-12 max-w-xl mx-auto" style={{ color: 'var(--brand-text)' }}>
+          <p className="text-lg mb-12 max-w-xl mx-auto" style={{ color: 'var(--brand-text)' }}>
             From emerging artists to established professionals, aSHE XCHNGE
             surfaces opportunities at every level.
           </p>
@@ -193,10 +193,10 @@ export function Home() {
       {/* CTA footer banner */}
       <section className="bg-red-600 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-4xl font-bold text-white mb-4">
             Ready to get started?
           </h2>
-          <p className="text-red-100 mb-8 text-lg">
+          <p className="text-red-100 mb-8 text-xl">
             Join aSHE XCHNGE today — it&apos;s free to create an account.
           </p>
           <Link

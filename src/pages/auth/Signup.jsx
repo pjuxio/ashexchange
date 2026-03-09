@@ -71,7 +71,8 @@ export function Signup() {
               Didn&apos;t get it? Check your spam folder, or{' '}
               <button
                 onClick={() => setSubmitted(false)}
-                className="text-indigo-600 hover:text-indigo-700 underline underline-offset-2"
+                className="underline underline-offset-2"
+                style={{ color: 'var(--brand-plum)' }}
               >
                 try again
               </button>
@@ -107,12 +108,10 @@ export function Signup() {
               <button
                 type="button"
                 onClick={() => setRole('artist')}
-                className={[
-                  'flex flex-col items-center gap-1 py-5 px-4 rounded-xl border-2 text-center transition-all',
-                  role === 'artist'
-                    ? 'border-indigo-600 bg-indigo-50'
-                    : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50',
-                ].join(' ')}
+                className="flex flex-col items-center gap-1 py-5 px-4 rounded-xl border-2 text-center transition-all"
+                style={role === 'artist'
+                  ? { borderColor: 'var(--brand-plum)', backgroundColor: '#f5eef4' }
+                  : { borderColor: '#e5e7eb' }}
               >
                 <span className="text-base font-bold" style={{ color: 'var(--brand-text)' }}>Artist</span>
                 <span className="text-xs text-gray-500">Build a profile &amp; find opportunities</span>
@@ -120,12 +119,10 @@ export function Signup() {
               <button
                 type="button"
                 onClick={() => setRole('organization')}
-                className={[
-                  'flex flex-col items-center gap-1 py-5 px-4 rounded-xl border-2 text-center transition-all',
-                  role === 'organization'
-                    ? 'border-indigo-600 bg-indigo-50'
-                    : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50',
-                ].join(' ')}
+                className="flex flex-col items-center gap-1 py-5 px-4 rounded-xl border-2 text-center transition-all"
+                style={role === 'organization'
+                  ? { borderColor: 'var(--brand-plum)', backgroundColor: '#f5eef4' }
+                  : { borderColor: '#e5e7eb' }}
               >
                 <span className="text-base font-bold" style={{ color: 'var(--brand-text)' }}>Organization</span>
                 <span className="text-xs text-gray-500">Post opportunities &amp; find talent</span>
@@ -171,6 +168,7 @@ export function Signup() {
               size="lg"
               className="w-full mt-2"
               disabled={loading}
+              style={{ backgroundColor: 'var(--brand-plum)' }}
             >
               {loading ? 'Creating account…' : 'Create Account'}
             </Button>
@@ -180,7 +178,8 @@ export function Signup() {
             Already have an account?{' '}
             <Link
               to="/login"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium"
+              style={{ color: 'var(--brand-plum)' }}
             >
               Sign in
             </Link>
