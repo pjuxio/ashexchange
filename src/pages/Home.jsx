@@ -26,7 +26,10 @@ export function Home() {
             <Link
               to="/signup"
               state={{ role: 'organization' }}
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold bg-white text-indigo-600 border-2 border-indigo-600 rounded-full hover:bg-indigo-50 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold bg-white rounded-full border-2 transition-colors"
+              style={{ color: 'var(--brand-plum)', borderColor: 'var(--brand-plum)' }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor='#f5eef4' }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor='white' }}
             >
               Post an Opportunity
             </Link>
@@ -69,65 +72,87 @@ export function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* For artists */}
             <div className="bg-white rounded-2xl p-8">
-              <div className="text-4xl mb-4">🎨</div>
               <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--brand-text)' }}>For Artists</h3>
               <ul className="space-y-3" style={{ color: 'var(--brand-text)' }}>
                 <li className="flex items-start gap-2">
-                  <span className="text-indigo-500 font-bold mt-0.5">✓</span>
-                  Build a rich profile showcasing your work, bio, and statement
+                  <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
+                  Build a profile with your bio, work, and artist statement
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-indigo-500 font-bold mt-0.5">✓</span>
+                  <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
                   Browse curated opportunities matched to your discipline
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-indigo-500 font-bold mt-0.5">✓</span>
+                  <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
                   Save opportunities and track deadlines in one place
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-indigo-500 font-bold mt-0.5">✓</span>
+                  <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
                   Be discovered by organizations looking for your skills
                 </li>
               </ul>
+              <div className="border-t border-gray-100 pt-4 mb-4 mt-5">
+                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--brand-text)' }}>
+                  Always free for artists.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Create your profile, browse opportunities, and get discovered —{' '}
+                  <span className="font-medium" style={{ color: 'var(--brand-green)' }}>at no cost</span>.
+                </p>
+              </div>
               <Link
                 to="/signup"
                 state={{ role: 'artist' }}
-                className="mt-6 inline-block text-sm font-semibold text-indigo-600 hover:text-indigo-700 underline underline-offset-2"
+                className="mt-2 inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white rounded-full transition-colors"
+                style={{ backgroundColor: 'var(--brand-plum)' }}
+                onMouseEnter={e => e.currentTarget.style.backgroundColor='#371330'}
+                onMouseLeave={e => e.currentTarget.style.backgroundColor='var(--brand-plum)'}
               >
-                Create an artist profile →
+                Create an artist profile
               </Link>
             </div>
 
             {/* For organizations */}
             <div className="bg-white rounded-2xl p-8">
-              <div className="text-4xl mb-4">🏛️</div>
               <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--brand-text)' }}>
                 For Organizations
               </h3>
-              <ul className="space-y-3" style={{ color: 'var(--brand-text)' }}>
+              <ul className="space-y-3 mb-5" style={{ color: 'var(--brand-text)' }}>
                 <li className="flex items-start gap-2">
-                  <span className="text-indigo-500 font-bold mt-0.5">✓</span>
+                  <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
                   Post jobs, residencies, fellowships, grants, and commissions
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-indigo-500 font-bold mt-0.5">✓</span>
+                  <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
                   Search artists by discipline, location, and career stage
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-indigo-500 font-bold mt-0.5">✓</span>
+                  <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
                   Save artists you&apos;re interested in for future reference
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-indigo-500 font-bold mt-0.5">✓</span>
+                  <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
                   Track views and engagement for your postings
                 </li>
               </ul>
+              <div className="border-t border-gray-100 pt-4 mb-4">
+                <p className="text-sm font-semibold mb-1" style={{ color: 'var(--brand-text)' }}>
+                  Posting is simple and self-managed.
+                </p>
+                <p className="text-sm text-gray-600">
+                  <span className="font-medium" style={{ color: 'var(--brand-green)' }}>$75 per listing</span> for a 90-day cycle.
+                  Boost visibility with a <span className="font-medium">Newsletter Spotlight</span> ($100) or <span className="font-medium">Banner Ad</span> (from $200).
+                </p>
+              </div>
               <Link
                 to="/signup"
                 state={{ role: 'organization' }}
-                className="mt-6 inline-block text-sm font-semibold text-indigo-600 hover:text-indigo-700 underline underline-offset-2"
+                className="mt-2 inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white rounded-full transition-colors"
+                style={{ backgroundColor: 'var(--brand-plum)' }}
+                onMouseEnter={e => e.currentTarget.style.backgroundColor='#371330'}
+                onMouseLeave={e => e.currentTarget.style.backgroundColor='var(--brand-plum)'}
               >
-                Post an opportunity →
+                Post an opportunity
               </Link>
             </div>
           </div>
@@ -156,7 +181,7 @@ export function Home() {
             ].map((type) => (
               <span
                 key={type}
-                className="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-700 font-medium shadow-sm text-sm"
+                className="px-4 py-1.5 rounded-md bg-white border border-gray-200 text-gray-700 font-medium shadow-sm text-sm"
               >
                 {type}
               </span>

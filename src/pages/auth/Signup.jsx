@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { Button } from '../../components/ui/Button'
 import { Input } from '../../components/ui/Input'
@@ -14,9 +14,9 @@ export function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   const { signUp } = useAuth()
-  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -47,14 +47,40 @@ export function Signup() {
         return
       }
 
-      if (role === 'organization') {
-        navigate('/profile/org/edit')
-      } else {
-        navigate('/profile/artist/edit')
-      }
+      setSubmitted(true)
     } finally {
       setLoading(false)
     }
+  }
+
+  if (submitted) {
+    return (
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12 bg-gray-50">
+        <div className="w-full max-w-md">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 text-center">
+            <div className="text-5xl mb-4">✉️</div>
+            <h1 className="text-2xl font-bold text-gray-900 mb-3">Check your inbox</h1>
+            <p className="text-gray-600 mb-2">
+              We sent a verification link to{' '}
+              <span className="font-semibold text-gray-900">{email}</span>.
+            </p>
+            <p className="text-gray-600 mb-6">
+              Click the link in the email to verify your account before logging in.
+            </p>
+            <p className="text-sm text-gray-400">
+              Didn&apos;t get it? Check your spam folder, or{' '}
+              <button
+                onClick={() => setSubmitted(false)}
+                className="text-indigo-600 hover:text-indigo-700 underline underline-offset-2"
+              >
+                try again
+              </button>
+              .
+            </p>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -82,27 +108,27 @@ export function Signup() {
                 type="button"
                 onClick={() => setRole('artist')}
                 className={[
-                  'flex flex-col items-center gap-2 p-4 rounded-xl border-2 text-sm font-medium transition-all',
+                  'flex flex-col items-center gap-1 py-5 px-4 rounded-xl border-2 text-center transition-all',
                   role === 'artist'
-                    ? 'border-indigo-600 bg-indigo-50 text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50',
+                    ? 'border-indigo-600 bg-indigo-50'
+                    : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50',
                 ].join(' ')}
               >
-                <span className="text-2xl">🎨</span>
-                <span>An Artist</span>
+                <span className="text-base font-bold" style={{ color: 'var(--brand-text)' }}>Artist</span>
+                <span className="text-xs text-gray-500">Build a profile &amp; find opportunities</span>
               </button>
               <button
                 type="button"
                 onClick={() => setRole('organization')}
                 className={[
-                  'flex flex-col items-center gap-2 p-4 rounded-xl border-2 text-sm font-medium transition-all',
+                  'flex flex-col items-center gap-1 py-5 px-4 rounded-xl border-2 text-center transition-all',
                   role === 'organization'
-                    ? 'border-indigo-600 bg-indigo-50 text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50',
+                    ? 'border-indigo-600 bg-indigo-50'
+                    : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50',
                 ].join(' ')}
               >
-                <span className="text-2xl">🏛️</span>
-                <span>An Organization</span>
+                <span className="text-base font-bold" style={{ color: 'var(--brand-text)' }}>Organization</span>
+                <span className="text-xs text-gray-500">Post opportunities &amp; find talent</span>
               </button>
             </div>
           </div>
