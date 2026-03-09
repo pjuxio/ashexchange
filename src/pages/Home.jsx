@@ -34,6 +34,26 @@ export function Home() {
         </div>
       </section>
 
+      {/* Banner image */}
+      <div className="w-full">
+        <img src="/banner.webp" alt="aSHE XCHNGE" className="w-full object-cover" />
+      </div>
+
+      {/* About */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--brand-text)' }}>
+            Our Mission
+          </h2>
+          <p className="text-lg leading-relaxed mb-6" style={{ color: 'var(--brand-text)' }}>
+            The aSHE XCHNGE designs programs, projects and products that center Black Women Creatives.
+          </p>
+          <p className="text-lg leading-relaxed" style={{ color: 'var(--brand-text)' }}>
+            We highlight and amplify the voices of Black women creatives across various artistic disciplines.
+          </p>
+        </div>
+      </section>
+
       {/* How it works */}
       <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'var(--brand-yellow)' }}>
         <div className="max-w-6xl mx-auto">
@@ -131,7 +151,7 @@ export function Home() {
               'Fellowships',
               'Grants',
               'Commissions',
-              'Teaching',
+              'Workshops',
               'Volunteer',
             ].map((type) => (
               <span
