@@ -1,16 +1,76 @@
-# React + Vite
+# AshExchange
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A platform connecting artists with organizations for job opportunities and collaborations.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React 19, React Router v7, Tailwind CSS v4
+- **Backend**: Supabase (auth + database)
+- **Build tool**: Vite
 
-## React Compiler
+## Running Locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js v18+
+- A [Supabase](https://supabase.com) account (free tier works)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Clone and install
+
+```bash
+git clone <your-repo-url>
+cd ashexchange
+npm install
+```
+
+### 2. Set up Supabase
+
+1. Create a new project at [supabase.com](https://supabase.com)
+2. In your project's **SQL Editor**, run the contents of `supabase/schema.sql` to create the required tables
+
+### 3. Configure environment variables
+
+```bash
+cp .env.example .env
+```
+
+Fill in your values from **Supabase → Project Settings → API**:
+
+```env
+VITE_SUPABASE_URL=https://your-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+```
+
+### 4. Start the dev server
+
+```bash
+npm run dev
+```
+
+App runs at `http://localhost:5173`
+
+## Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── layout/       # Navbar, Layout wrapper
+│   └── ui/           # Reusable UI components (Button, Input)
+├── contexts/         # React contexts (AuthContext)
+├── lib/              # Supabase client
+└── pages/
+    ├── auth/         # Login, Signup
+    ├── artist/       # Artist profile pages
+    ├── org/          # Organization profile pages
+    ├── opportunity/  # Opportunity listing, detail, creation
+    └── dashboard/    # Artist and org dashboards
+```
