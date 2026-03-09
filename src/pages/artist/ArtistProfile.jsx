@@ -24,37 +24,82 @@ const AVAILABILITY_COLORS = {
 export function ArtistProfile() {
   const { id } = useParams()
   const { user } = useAuth()
+
   const [profile, setProfile] = useState(null)
   const [disciplines, setDisciplines] = useState([])
   const [loading, setLoading] = useState(true)
   const [notFound, setNotFound] = useState(false)
 
+  // Save state — only relevant for orgs
+  const [orgProfileId, setOrgProfileId] = useState(null)
+  const [saved, setSaved] = useState(false)
+  const [savingToggle, setSavingToggle] = useState(false)
+
+  const isOrg = user?.user_metadata?.role === 'organization'
+
   useEffect(() => {
     async function load() {
       setLoading(true)
-      const { data: profileData, error } = await supabase
-        .from('artist_profiles')
-        .select('*')
-        .eq('id', id)
-        .maybeSingle()
 
-      if (error || !profileData) {
+      const [profileResult, tagsResult] = await Promise.all([
+        supabase.from('artist_profiles').select('*').eq('id', id).maybeSingle(),
+        supabase.from('artist_tags').select('taxonomy_id, taxonomy(label)').eq('artist_profile_id', id),
+      ])
+
+      if (profileResult.error || !profileResult.data) {
         setNotFound(true)
         setLoading(false)
         return
       }
-      setProfile(profileData)
 
-      const { data: tags } = await supabase
-        .from('artist_tags')
-        .select('taxonomy_id, taxonomy(label)')
-        .eq('artist_profile_id', id)
-      setDisciplines((tags ?? []).map((t) => t.taxonomy?.label).filter(Boolean))
-
+      setProfile(profileResult.data)
+      setDisciplines((tagsResult.data ?? []).map((t) => t.taxonomy?.label).filter(Boolean))
       setLoading(false)
     }
     load()
   }, [id])
+
+  // Load org profile + saved state for orgs
+  useEffect(() => {
+    if (!user || !isOrg) return
+    async function loadSaveState() {
+      const { data: org } = await supabase
+        .from('org_profiles')
+        .select('id')
+        .eq('user_id', user.id)
+        .maybeSingle()
+      if (!org) return
+      setOrgProfileId(org.id)
+
+      const { data: savedRow } = await supabase
+        .from('saved_artists')
+        .select('artist_profile_id')
+        .eq('org_profile_id', org.id)
+        .eq('artist_profile_id', id)
+        .maybeSingle()
+      setSaved(!!savedRow)
+    }
+    loadSaveState()
+  }, [user, isOrg, id])
+
+  async function toggleSave() {
+    if (!orgProfileId) return
+    setSavingToggle(true)
+    if (saved) {
+      await supabase
+        .from('saved_artists')
+        .delete()
+        .eq('org_profile_id', orgProfileId)
+        .eq('artist_profile_id', id)
+      setSaved(false)
+    } else {
+      await supabase
+        .from('saved_artists')
+        .insert({ org_profile_id: orgProfileId, artist_profile_id: id })
+      setSaved(true)
+    }
+    setSavingToggle(false)
+  }
 
   const isOwner = user?.id === profile?.user_id
 
@@ -106,14 +151,31 @@ export function ArtistProfile() {
               )}
             </div>
           </div>
-          {isOwner && (
-            <Link
-              to="/profile/artist/edit"
-              className="flex-shrink-0 text-sm font-medium text-indigo-600 hover:text-indigo-700 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-50 transition-colors"
-            >
-              Edit profile
-            </Link>
-          )}
+
+          <div className="flex flex-col gap-2 flex-shrink-0">
+            {isOwner && (
+              <Link
+                to="/profile/artist/edit"
+                className="text-sm font-medium text-indigo-600 hover:text-indigo-700 border border-indigo-200 rounded-lg px-3 py-1.5 hover:bg-indigo-50 transition-colors text-center"
+              >
+                Edit profile
+              </Link>
+            )}
+            {isOrg && orgProfileId && (
+              <button
+                onClick={toggleSave}
+                disabled={savingToggle}
+                className={[
+                  'text-sm font-medium border rounded-lg px-3 py-1.5 transition-colors disabled:opacity-50',
+                  saved
+                    ? 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-red-50 hover:text-red-600 hover:border-red-200'
+                    : 'bg-white text-gray-700 border-gray-300 hover:border-indigo-300 hover:text-indigo-700',
+                ].join(' ')}
+              >
+                {saved ? '★ Saved' : '☆ Save artist'}
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -123,9 +185,7 @@ export function ArtistProfile() {
           <h2 className="text-base font-semibold text-gray-900 mb-3">Disciplines</h2>
           <div className="flex flex-wrap gap-2">
             {disciplines.map((d) => (
-              <span key={d} className="px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700">
-                {d}
-              </span>
+              <span key={d} className="px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700">{d}</span>
             ))}
           </div>
         </div>
@@ -154,24 +214,16 @@ export function ArtistProfile() {
           <ul className="space-y-2">
             {profile.website_url && (
               <li>
-                <a
-                  href={profile.website_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-indigo-600 hover:underline"
-                >
+                <a href={profile.website_url} target="_blank" rel="noopener noreferrer"
+                  className="text-sm text-indigo-600 hover:underline">
                   Website →
                 </a>
               </li>
             )}
             {(profile.links ?? []).map((link, i) => (
               <li key={i}>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-indigo-600 hover:underline"
-                >
+                <a href={link.url} target="_blank" rel="noopener noreferrer"
+                  className="text-sm text-indigo-600 hover:underline">
                   {link.label || link.url} →
                 </a>
               </li>

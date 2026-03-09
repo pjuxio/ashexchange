@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext'
 import { supabase } from '../../lib/supabase'
 
 const TYPE_LABELS = {
@@ -39,40 +40,90 @@ function isPastDeadline(deadline, isRolling) {
 
 export function OpportunityDetail() {
   const { id } = useParams()
+  const { user } = useAuth()
+
   const [opp, setOpp] = useState(null)
   const [disciplines, setDisciplines] = useState([])
   const [loading, setLoading] = useState(true)
   const [notFound, setNotFound] = useState(false)
 
+  // Save state — only relevant for artists
+  const [artistProfileId, setArtistProfileId] = useState(null)
+  const [saved, setSaved] = useState(false)
+  const [savingToggle, setSavingToggle] = useState(false)
+
+  const isArtist = user?.user_metadata?.role === 'artist'
+
   useEffect(() => {
     async function load() {
       setLoading(true)
-      const { data, error } = await supabase
-        .from('opportunities')
-        .select(`
-          *,
-          org_profiles (id, name, org_type, city, region, country, website_url)
-        `)
-        .eq('id', id)
-        .maybeSingle()
 
-      if (error || !data) {
+      const [oppResult, tagsResult] = await Promise.all([
+        supabase
+          .from('opportunities')
+          .select('*, org_profiles (id, name, org_type, city, region, country, website_url)')
+          .eq('id', id)
+          .maybeSingle(),
+        supabase
+          .from('opportunity_tags')
+          .select('taxonomy_id, taxonomy(label)')
+          .eq('opportunity_id', id),
+      ])
+
+      if (oppResult.error || !oppResult.data) {
         setNotFound(true)
         setLoading(false)
         return
       }
-      setOpp(data)
 
-      const { data: tags } = await supabase
-        .from('opportunity_tags')
-        .select('taxonomy_id, taxonomy(label)')
-        .eq('opportunity_id', id)
-      setDisciplines((tags ?? []).map((t) => t.taxonomy?.label).filter(Boolean))
-
+      setOpp(oppResult.data)
+      setDisciplines((tagsResult.data ?? []).map((t) => t.taxonomy?.label).filter(Boolean))
       setLoading(false)
     }
     load()
   }, [id])
+
+  // Load artist profile + saved state once we know the user is an artist
+  useEffect(() => {
+    if (!user || !isArtist) return
+    async function loadSaveState() {
+      const { data: profile } = await supabase
+        .from('artist_profiles')
+        .select('id')
+        .eq('user_id', user.id)
+        .maybeSingle()
+      if (!profile) return
+      setArtistProfileId(profile.id)
+
+      const { data: savedRow } = await supabase
+        .from('saved_opportunities')
+        .select('opportunity_id')
+        .eq('artist_profile_id', profile.id)
+        .eq('opportunity_id', id)
+        .maybeSingle()
+      setSaved(!!savedRow)
+    }
+    loadSaveState()
+  }, [user, isArtist, id])
+
+  async function toggleSave() {
+    if (!artistProfileId) return
+    setSavingToggle(true)
+    if (saved) {
+      await supabase
+        .from('saved_opportunities')
+        .delete()
+        .eq('artist_profile_id', artistProfileId)
+        .eq('opportunity_id', id)
+      setSaved(false)
+    } else {
+      await supabase
+        .from('saved_opportunities')
+        .insert({ artist_profile_id: artistProfileId, opportunity_id: id })
+      setSaved(true)
+    }
+    setSavingToggle(false)
+  }
 
   if (loading) {
     return (
@@ -124,19 +175,13 @@ export function OpportunityDetail() {
         <h1 className="text-2xl font-bold text-gray-900">{opp.title}</h1>
 
         {org && (
-          <Link
-            to={`/profile/org/${org.id}`}
-            className="mt-1 inline-block text-sm text-indigo-600 hover:underline"
-          >
+          <Link to={`/profile/org/${org.id}`} className="mt-1 inline-block text-sm text-indigo-600 hover:underline">
             {org.name}
           </Link>
         )}
 
-        {/* Meta row */}
         <dl className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {location && (
-            <MetaItem label="Location" value={location} />
-          )}
+          {location && <MetaItem label="Location" value={location} />}
           {opp.compensation_type && (
             <MetaItem
               label="Compensation"
@@ -144,11 +189,7 @@ export function OpportunityDetail() {
             />
           )}
           {deadline && (
-            <MetaItem
-              label="Deadline"
-              value={deadline}
-              valueClass={past ? 'text-red-600 font-medium' : undefined}
-            />
+            <MetaItem label="Deadline" value={deadline} valueClass={past ? 'text-red-600 font-medium' : undefined} />
           )}
           {opp.career_stage_eligibility?.length > 0 && (
             <MetaItem
@@ -158,26 +199,22 @@ export function OpportunityDetail() {
           )}
         </dl>
 
-        {/* Disciplines */}
         {disciplines.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {disciplines.map((d) => (
-              <span key={d} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-700">
-                {d}
-              </span>
+              <span key={d} className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-700">{d}</span>
             ))}
           </div>
         )}
 
-        {/* Apply button */}
-        {opp.apply_url && (
-          <div className="mt-6">
+        <div className="mt-6 flex flex-wrap gap-3">
+          {opp.apply_url && (
             <a
               href={opp.apply_url}
               target="_blank"
               rel="noopener noreferrer"
               className={[
-                'inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-medium transition-colors',
+                'inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-sm font-medium transition-colors',
                 past
                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed pointer-events-none'
                   : 'bg-indigo-600 text-white hover:bg-indigo-700',
@@ -185,8 +222,23 @@ export function OpportunityDetail() {
             >
               {past ? 'Deadline passed' : 'Apply now →'}
             </a>
-          </div>
-        )}
+          )}
+
+          {isArtist && artistProfileId && (
+            <button
+              onClick={toggleSave}
+              disabled={savingToggle}
+              className={[
+                'inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border transition-colors disabled:opacity-50',
+                saved
+                  ? 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-red-50 hover:text-red-600 hover:border-red-200'
+                  : 'bg-white text-gray-700 border-gray-300 hover:border-indigo-300 hover:text-indigo-700',
+              ].join(' ')}
+            >
+              {saved ? '★ Saved' : '☆ Save'}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Description */}
@@ -212,12 +264,8 @@ export function OpportunityDetail() {
             </p>
           )}
           {org.website_url && (
-            <a
-              href={org.website_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-block text-sm text-indigo-600 hover:underline"
-            >
+            <a href={org.website_url} target="_blank" rel="noopener noreferrer"
+              className="mt-2 inline-block text-sm text-indigo-600 hover:underline">
               {org.website_url}
             </a>
           )}
