@@ -19,7 +19,7 @@ export function Navbar() {
           {/* Logo */}
           <Link
             to="/"
-            className="text-xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors"
+            className="text-xl font-bold transition-colors" style={{ color: 'var(--brand-text)' }}
           >
             aSHE XCHNGE
           </Link>
@@ -54,7 +54,7 @@ export function Navbar() {
                 </Link>
                 <Link
                   to="/signup"
-                  className="text-sm font-medium bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="text-sm font-medium text-white px-4 py-2 rounded-full transition-colors" style={{ backgroundColor: 'var(--brand-red)' }} onMouseEnter={e => e.currentTarget.style.backgroundColor='#b03520'} onMouseLeave={e => e.currentTarget.style.backgroundColor='var(--brand-red)'}
                 >
                   Sign Up
                 </Link>
