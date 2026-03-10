@@ -31,7 +31,7 @@ export function Home() {
               onMouseEnter={e => { e.currentTarget.style.backgroundColor='#f5eef4' }}
               onMouseLeave={e => { e.currentTarget.style.backgroundColor='white' }}
             >
-              Post an Opportunity
+              I&apos;m an Organization
             </Link>
           </div>
         </div>
