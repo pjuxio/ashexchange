@@ -115,7 +115,7 @@ export function ArtistProfile() {
     return (
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
         <h1 className="text-2xl font-bold text-gray-900">Profile not found</h1>
-        <p className="mt-2 text-gray-500">This artist profile doesn't exist or has been removed.</p>
+        <p className="mt-2 text-gray-500">This creative profile doesn't exist or has been removed.</p>
       </div>
     )
   }
@@ -128,7 +128,7 @@ export function ArtistProfile() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">
-              {profile.name || 'Unnamed Artist'}
+              {profile.name || 'Unnamed Creative'}
               {profile.pronouns && (
                 <span className="ml-2 text-base font-normal text-gray-500">({profile.pronouns})</span>
               )}
@@ -172,7 +172,7 @@ export function ArtistProfile() {
                     : 'bg-white text-gray-700 border-gray-300 hover:border-indigo-300 hover:text-indigo-700',
                 ].join(' ')}
               >
-                {saved ? '★ Saved' : '☆ Save artist'}
+                {saved ? '★ Saved' : '☆ Save creative'}
               </button>
             )}
           </div>
@@ -202,7 +202,7 @@ export function ArtistProfile() {
       {/* Artist statement */}
       {profile.artist_statement && (
         <div className="bg-white rounded-2xl border border-gray-200 p-6">
-          <h2 className="text-base font-semibold text-gray-900 mb-2">Artist Statement</h2>
+          <h2 className="text-base font-semibold text-gray-900 mb-2">Creative Statement</h2>
           <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{profile.artist_statement}</p>
         </div>
       )}

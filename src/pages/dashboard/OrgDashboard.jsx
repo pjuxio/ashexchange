@@ -173,14 +173,14 @@ export function OrgDashboard() {
 
         {/* Saved artists */}
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Saved Artists</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Saved Creatives</h2>
 
           {loading ? (
             <div className="text-sm text-gray-400 py-6 text-center">Loading…</div>
           ) : savedArtists.length === 0 ? (
             <div className="bg-white rounded-2xl border border-gray-200 p-8 text-center">
-              <p className="text-gray-500 text-sm">No saved artists yet.</p>
-              <p className="text-xs text-gray-400 mt-1">Visit an artist's profile and click "Save artist" to add them here.</p>
+              <p className="text-gray-500 text-sm">No saved creatives yet.</p>
+              <p className="text-xs text-gray-400 mt-1">Visit a creative's profile and click "Save creative" to add them here.</p>
             </div>
           ) : (
             <ul className="space-y-3">
@@ -193,7 +193,7 @@ export function OrgDashboard() {
                       className="flex items-center justify-between gap-4 bg-white rounded-2xl border border-gray-200 px-5 py-4 hover:border-indigo-300 hover:shadow-sm transition-all"
                     >
                       <div>
-                        <p className="font-medium text-gray-900">{artist.name || 'Unnamed Artist'}</p>
+                        <p className="font-medium text-gray-900">{artist.name || 'Unnamed Creative'}</p>
                         {location && <p className="text-sm text-gray-500 mt-0.5">{location}</p>}
                       </div>
                       {artist.availability === 'open' && (

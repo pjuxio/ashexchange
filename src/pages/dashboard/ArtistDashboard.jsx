@@ -66,7 +66,7 @@ export function ArtistDashboard() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Artist Dashboard</h1>
+        <h1 className="text-3xl font-bold text-gray-900">Creative Dashboard</h1>
         <p className="mt-1 text-gray-500">Welcome back, {displayName}</p>
       </div>
 
@@ -82,7 +82,7 @@ export function ArtistDashboard() {
               {profile ? 'Edit Profile' : 'Set Up Profile'}
             </p>
             <p className="text-sm text-gray-500">
-              {profile ? 'Update your bio, disciplines, and links' : 'Create your artist profile to get discovered'}
+              {profile ? 'Update your bio, disciplines, and links' : 'Create your creative profile to get discovered'}
             </p>
           </div>
         </Link>

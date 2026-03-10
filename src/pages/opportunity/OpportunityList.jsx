@@ -140,7 +140,7 @@ export function OpportunityList() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Browse Opportunities</h1>
-        <p className="mt-1 text-gray-500">Jobs, residencies, fellowships, grants, and more for artists.</p>
+        <p className="mt-1 text-gray-500">Jobs, residencies, fellowships, grants, and more for creatives.</p>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6">

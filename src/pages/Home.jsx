@@ -7,11 +7,11 @@ export function Home() {
       <section className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
-            Connect Creative Artists with{' '}
+            Connect Creatives with{' '}
             <span style={{ color: 'var(--brand-red)' }}>Opportunities</span>
           </h1>
           <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            aSHE XCHNGE is a dedicated platform where artists discover residencies,
+            aSHE XCHNGE is a dedicated platform where creatives discover residencies,
             fellowships, grants, and jobs — and organizations find the creative
             talent they need.
           </p>
@@ -21,7 +21,7 @@ export function Home() {
               state={{ role: 'artist' }}
               className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full transition-colors shadow-lg" style={{ backgroundColor: 'var(--brand-plum)' }} onMouseEnter={e => e.currentTarget.style.backgroundColor='#371330'} onMouseLeave={e => e.currentTarget.style.backgroundColor='var(--brand-plum)'}
             >
-              I&apos;m an Artist
+              I&apos;m a Creative
             </Link>
             <Link
               to="/signup"
@@ -64,19 +64,19 @@ export function Home() {
             How aSHE XCHNGE Works
           </h2>
           <p className="text-lg text-center mb-14 max-w-4xl mx-auto" style={{ color: 'var(--brand-text)' }}>
-            Whether you&apos;re an artist looking for your next opportunity or an
-            organization searching for creative talent, we&apos;ve built aSHE XCHNGE
+            Whether you&apos;re a creative looking for your next opportunity or an
+            organization searching for talent, we&apos;ve built aSHE XCHNGE
             for you.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* For artists */}
             <div className="bg-white rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--brand-text)' }}>For Artists</h3>
+              <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--brand-text)' }}>For Creatives</h3>
               <ul className="space-y-3 text-lg" style={{ color: 'var(--brand-text)' }}>
                 <li className="flex items-start gap-2">
                   <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
-                  Build a profile with your bio, work, and artist statement
+                  Build a profile with your bio, work, and creative statement
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
@@ -93,7 +93,7 @@ export function Home() {
               </ul>
               <div className="border-t border-gray-100 pt-4 mb-4 mt-5">
                 <p className="text-sm font-semibold mb-1" style={{ color: 'var(--brand-text)' }}>
-                  Always free for artists.
+                  Always free for creatives.
                 </p>
                 <p className="text-sm text-gray-600">
                   Create your <span className="font-medium" style={{ color: 'var(--brand-green)' }}>FREE</span> profile, browse opportunities, and get discovered.
@@ -107,7 +107,7 @@ export function Home() {
                 onMouseEnter={e => e.currentTarget.style.backgroundColor='#371330'}
                 onMouseLeave={e => e.currentTarget.style.backgroundColor='var(--brand-plum)'}
               >
-                Create an artist profile
+                Create a creative profile
               </Link>
             </div>
 
@@ -123,11 +123,11 @@ export function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
-                  Search artists by discipline, location, and career stage
+                  Search creatives by discipline, location, and career stage
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
-                  Save artists you&apos;re interested in for future reference
+                  Save creatives you&apos;re interested in for future reference
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="font-bold mt-0.5" style={{ color: 'var(--brand-green)' }}>✓</span>
@@ -164,7 +164,7 @@ export function Home() {
             Opportunities for Every Career Stage
           </h2>
           <p className="text-lg mb-12 max-w-xl mx-auto" style={{ color: 'var(--brand-text)' }}>
-            From emerging artists to established professionals, aSHE XCHNGE
+            From emerging creatives to established professionals, aSHE XCHNGE
             surfaces opportunities at every level.
           </p>
           <div className="flex flex-wrap justify-center gap-3">

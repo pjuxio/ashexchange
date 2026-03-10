@@ -202,7 +202,7 @@ export function EditArtistProfile() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-gray-900">Edit Artist Profile</h1>
+      <h1 className="text-3xl font-bold text-gray-900">Edit Creative Profile</h1>
       <p className="mt-1 text-gray-500">This is how organizations and collaborators will find you.</p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-8">
@@ -246,7 +246,7 @@ export function EditArtistProfile() {
           </div>
           <div>
             <label htmlFor="artist_statement" className="text-sm font-medium text-gray-700 block mb-1">
-              Artist statement
+              Creative statement
             </label>
             <textarea
               id="artist_statement"

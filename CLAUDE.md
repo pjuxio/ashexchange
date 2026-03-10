@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-aSHE XCHNGE is a platform connecting artists with organizations for jobs, residencies, fellowships, grants, commissions, and other opportunities. Artists create profiles and save opportunities; organizations post listings and save artists.
+aSHE XCHNGE is a platform connecting creatives with organizations for jobs, residencies, fellowships, grants, commissions, and other opportunities. Creatives create profiles and save opportunities; organizations post listings and save creatives.
 
 ## Tech Stack
 

@@ -113,7 +113,7 @@ export function Signup() {
                   ? { borderColor: 'var(--brand-plum)', backgroundColor: '#f5eef4' }
                   : { borderColor: '#e5e7eb' }}
               >
-                <span className="text-base font-bold" style={{ color: 'var(--brand-text)' }}>Artist</span>
+                <span className="text-base font-bold" style={{ color: 'var(--brand-text)' }}>Creative</span>
                 <span className="text-xs text-gray-500">Build a profile &amp; find opportunities</span>
               </button>
               <button
