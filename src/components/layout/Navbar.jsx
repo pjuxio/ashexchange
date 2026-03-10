@@ -13,33 +13,33 @@ export function Navbar() {
   const role = user?.user_metadata?.role
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <nav className="sticky top-0 z-50" style={{ backgroundColor: 'var(--brand-sienna)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link
-            to="/"
-            className="text-xl font-bold transition-colors" style={{ color: 'var(--brand-text)' }}
-          >
-            aSHE XCHNGE
+          <Link to="/" className="flex items-center gap-3">
+            <img src="/ashe-brand.svg" alt="" className="h-14 w-auto" style={{ filter: 'brightness(0) saturate(100%) invert(87%) sepia(47%) saturate(534%) hue-rotate(331deg) brightness(103%) contrast(101%)' }} />
+            <span className="text-xl font-bold" style={{ color: 'var(--brand-yellow)' }}>aSHE XCHNGE</span>
           </Link>
 
           {/* Right side */}
           <div className="flex items-center gap-4">
             {user ? (
               <>
-                <span className="hidden sm:block text-sm text-gray-600 truncate max-w-xs">
+                <span className="hidden sm:block text-sm truncate max-w-xs" style={{ color: 'var(--brand-yellow)' }}>
                   {user.email}
                 </span>
                 <Link
                   to={role === 'organization' ? '/dashboard/org' : '/dashboard/artist'}
-                  className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+                  className="text-sm font-medium transition-colors"
+                  style={{ color: 'var(--brand-yellow)' }}
                 >
                   Dashboard
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors px-3 py-1.5 rounded-lg hover:bg-gray-100"
+                  className="text-sm font-medium transition-colors px-3 py-1.5 rounded-lg hover:bg-white/20"
+                  style={{ color: 'var(--brand-yellow)' }}
                 >
                   Sign Out
                 </button>
@@ -48,13 +48,14 @@ export function Navbar() {
               <>
                 <Link
                   to="/login"
-                  className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-sm font-medium transition-colors"
+                  style={{ color: 'var(--brand-yellow)' }}
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="text-sm font-medium text-white px-4 py-2 rounded-full transition-colors" style={{ backgroundColor: 'var(--brand-red)' }} onMouseEnter={e => e.currentTarget.style.backgroundColor='#b03520'} onMouseLeave={e => e.currentTarget.style.backgroundColor='var(--brand-red)'}
+                  className="text-sm font-medium px-4 py-2 rounded-full transition-colors" style={{ backgroundColor: 'var(--brand-yellow)', color: 'var(--brand-sienna)' }} onMouseEnter={e => e.currentTarget.style.backgroundColor='#f0c808'} onMouseLeave={e => e.currentTarget.style.backgroundColor='var(--brand-yellow)'}
                 >
                   Sign Up
                 </Link>

@@ -7,8 +7,7 @@ export function Home() {
       <section className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
-            Connect Creatives with{' '}
-            <span style={{ color: 'var(--brand-red)' }}>Opportunities</span>
+            Connect Creatives with Opportunities
           </h1>
           <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             aSHE XCHNGE is a dedicated platform where creatives discover residencies,
@@ -161,7 +160,7 @@ export function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#fffef5' }}>
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-4" style={{ color: 'var(--brand-text)' }}>
-            Opportunities for Every Career Stage
+            Opportunities for every career stage
           </h2>
           <p className="text-lg mb-12 max-w-xl mx-auto" style={{ color: 'var(--brand-text)' }}>
             From emerging creatives to established professionals, aSHE XCHNGE
