@@ -144,6 +144,7 @@ opportunity status:        draft | active | closed
 | `--brand-red` | `#d03f24` | Hero accents, CTA banner section |
 | `--brand-brown` | `#c2730f` | Secondary accents (maps to Tailwind `indigo`) |
 | `--brand-yellow` | `#ffde59` | "How it Works" section background |
+| `--brand-sienna` | `#8e4f04` | Dark amber accent |
 | `--brand-green` | `#2d5016` | Checkmarks, free/pricing accent text |
 | `--brand-text` | `#1a1a1a` | Default body text |
 
@@ -164,5 +165,5 @@ opportunity status:        draft | active | closed
 
 ## Git
 
+Main branch: `main` (deployed to Vercel on push)
 Active development branch: `claude/artist-job-matching-app-Euvqo`
-No `main` branch exists yet — all work is on the feature branch above.
