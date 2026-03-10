@@ -1,1 +1,99 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ─── Brand color variables ──────────────────────────────────────────────── */
+:root {
+  --brand-brown: #c2730f;
+  --brand-yellow: #ffde59;
+  --brand-red: #d03f24;
+  --brand-green: #2d5016;
+  --brand-plum: #4a1942;
+  --brand-text: #1a1a1a;
+}
+
+/* ─── Tailwind theme overrides — earth tones ─────────────────────────────── */
+@theme {
+  /* indigo → warm brown (primary actions, links, focus rings) */
+  --color-indigo-50:  #fef4e7;
+  --color-indigo-100: #fce4bc;
+  --color-indigo-200: #f8c884;
+  --color-indigo-300: #f2a548;
+  --color-indigo-400: #e8881e;
+  --color-indigo-500: #c2730f;
+  --color-indigo-600: #c2730f;
+  --color-indigo-700: #9e5d0c;
+  --color-indigo-800: #7b4809;
+  --color-indigo-900: #5a3507;
+
+  /* red → brand red (errors, danger, past deadlines) */
+  --color-red-50:  #fdf2ef;
+  --color-red-100: #fbe0da;
+  --color-red-200: #f6bcb2;
+  --color-red-300: #ee9080;
+  --color-red-400: #e36250;
+  --color-red-500: #d03f24;
+  --color-red-600: #d03f24;
+  --color-red-700: #b0351e;
+  --color-red-800: #8e2b18;
+  --color-red-900: #6b2012;
+
+  /* purple → warm yellow (accent, hybrid badge, org section) */
+  --color-purple-50:  #fffef5;
+  --color-purple-100: #fffce6;
+  --color-purple-200: #fff8c2;
+  --color-purple-300: #fff089;
+  --color-purple-400: #ffe666;
+  --color-purple-500: #ffde59;
+  --color-purple-600: #f0c808;
+  --color-purple-700: #d1ae07;
+  --color-purple-800: #a88a05;
+  --color-purple-900: #7e6804;
+
+  /* green → sage olive (active status, open availability, job badge) */
+  --color-green-50:  #f4f7ef;
+  --color-green-100: #e4eddb;
+  --color-green-200: #c6d9b3;
+  --color-green-300: #9dbf83;
+  --color-green-400: #74a054;
+  --color-green-500: #557f38;
+  --color-green-600: #42652c;
+  --color-green-700: #334e22;
+  --color-green-800: #263b1a;
+  --color-green-900: #1a2a12;
+
+  /* blue → warm amber (remote badge) */
+  --color-blue-50:  #fdf7ee;
+  --color-blue-100: #f9ead0;
+  --color-blue-200: #f3d09e;
+  --color-blue-300: #eab063;
+  --color-blue-400: #de8c2e;
+  --color-blue-500: #c97018;
+  --color-blue-600: #a85912;
+  --color-blue-700: #86450e;
+  --color-blue-800: #65340a;
+  --color-blue-900: #4b2608;
+
+  /* teal → warm olive/khaki (grant badge) */
+  --color-teal-50:  #f5f6ef;
+  --color-teal-100: #e7e9d5;
+  --color-teal-200: #ced4ab;
+  --color-teal-300: #b0b979;
+  --color-teal-400: #909c4f;
+  --color-teal-500: #717b34;
+  --color-teal-600: #596228;
+  --color-teal-700: #444b1f;
+  --color-teal-800: #323817;
+  --color-teal-900: #232710;
+}
+
+/* ─── Base text color ────────────────────────────────────────────────────── */
+@theme {
+  --font-sans: 'Poppins', sans-serif;
+}
+
+@layer base {
+  body {
+    color: var(--brand-text);
+    font-family: 'Poppins', sans-serif;
+  }
+}
