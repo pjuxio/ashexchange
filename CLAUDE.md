@@ -164,5 +164,5 @@ opportunity status:        draft | active | closed
 
 ## Git
 
+Main branch: `main` (deployed to Vercel on push)
 Active development branch: `claude/artist-job-matching-app-Euvqo`
-No `main` branch exists yet — all work is on the feature branch above.
